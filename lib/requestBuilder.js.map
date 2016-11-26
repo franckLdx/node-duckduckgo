@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/requestBuilder.ts"],"names":[],"mappings":";AACA;IACE,wBAAoB,OAA2B;QAAnC,uBAAmC,GAAnC,2BAAmC;QAA3B,YAAO,GAAP,OAAO,CAAoB;IAE/C,CAAC;IACH,qBAAC;AAAD,CAJA,AAIC,IAAA;AAJY,sBAAc,iBAI1B,CAAA","file":"requestBuilder.js","sourcesContent":["\r\nexport class RequestBuilder {\r\n  constructor(private appName = \"node-duckduckgo\") {\r\n\r\n  }\r\n}\r\n"]}
