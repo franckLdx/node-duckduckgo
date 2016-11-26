@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"names":[],"mappings":";AACA;IACE,YAAoB,OAAO,GAAG,iBAAiB;QAA3B,YAAO,GAAP,OAAO,CAAoB;IAE/C,CAAC;AACH,CAAC;AAJY,iBAAS,YAIrB,CAAA","file":"index.js","sourcesContent":["\r\nexport class Requester {\r\n  constructor(private appName = \"node-duckduckgo\") {\r\n\r\n  }\r\n}\r\n"]}

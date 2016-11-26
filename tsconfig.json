@@ -10,7 +10,7 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "target": "es3"
+    "target": "es6"
   },
   "rootDir": "./src",
   "include": [
