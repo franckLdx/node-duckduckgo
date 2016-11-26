@@ -5,6 +5,7 @@ const mocha = require('gulp-mocha');
 const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
 const typeScript = require('gulp-typeScript');
+const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 
 const codeConfigFile = require('./tsconfig.json');
 
@@ -40,11 +41,11 @@ gulp.task('lint', function() {
     .pipe(tslint.report())
 });
 
-gulp.task('cleanLib', function() {
+gulp.task('build:pre', function() {
   del(codeConfig.buildDir);
 });
 
-gulp.task('build', ['cleanLib', 'lint'], () => {
+gulp.task('build', ['build:pre', 'lint'], () => {
   return gulp.src(codeConfig.srcFiles)
     .pipe(sourcemaps.init())
     .pipe(typeScript(codeConfig.compilerOptions))
@@ -52,17 +53,30 @@ gulp.task('build', ['cleanLib', 'lint'], () => {
     .pipe(gulp.dest(codeConfig.buildDir));
 });
 
-gulp.task('pre-test', ['build'], function () {
+gulp.task('test:clean', function() {
+  return del(testConfig.coverageDir);
+});
+
+gulp.task('test:pre', ['test:clean','build'], function () {
   return gulp.src(codeConfig.buildFiles)
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function () {
+gulp.task('test', ['test:pre'], function () {
   return gulp.src(testConfig.files)
     .pipe(mocha())
     .pipe(istanbul.writeReports({
-      reporters: [ 'html' ],
+      reporters: [ 'json' ],
       reportOpts: { dir: testConfig.coverageDir },
-    }));
+    })).on('end', remapCoverageFiles);
 });
+
+function remapCoverageFiles() {
+    return gulp.src('./coverage/coverage-final.json')
+    .pipe(remapIstanbul({
+        reports: {
+            'html': './coverage'
+        }
+    }));
+}
