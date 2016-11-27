@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "declaration": true,
+    "declaration": false,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "lf",
     "noImplicitAny": true,
-    "outDir": "./lib",
-    "sourceMap": true,
+    "outDir": "../testTmp",
+    "sourceMap": false,
     "inlineSourceMap": false,
     "inlineSources": false,
     "target": "es6"
   },
-  "rootDir": "./src",
+  "rootDir": ".",
   "include": [
     "**/*.ts"
   ],
