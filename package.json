@@ -1,7 +1,7 @@
 {
   "name": "node-duckduckgo",
   "version": "1.0.0",
-  "description": "Node client\u001b[1;5D\u001b[1;5D\u001b[D\u001b[D\u001bDuckDuckGo client for node",
+  "description": "DuckDuckGo client for node",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/tsc",
@@ -30,13 +30,14 @@
     "gulp": "^3.9.1",
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
-    "gulp-sourcemaps": "^1.9.1",
     "gulp-tslint": "^7.0.1",
-    "gulp-typescript": "^3.1.3",
     "mocha": "^3.2.0",
     "remap-istanbul": "^0.7.0",
     "ts-node": "^1.7.0",
     "tslint": "^4.0.2",
     "typescript": "^2.0.10"
+  },
+  "dependencies": {
+    "gulp-use-tsconfig": "^1.0.1"
   }
 }
