@@ -37,6 +37,6 @@
     "typescript": "^2.0.10"
   },
   "dependencies": {
-    "gulp-use-tsconfig": "^1.0.1"
+    "gulp-use-tsconfig": "^1.1.0"
   }
 }

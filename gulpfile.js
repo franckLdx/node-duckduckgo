@@ -17,17 +17,12 @@ const TEST_CONFIG = {
 }
 
 gulp.task('lib:lint', function() {
-  return gulp.src('./src/**/*.ts')
-    .pipe(tslint({
-      formatter: "verbose"
-    }))
-    .pipe(tslint.report())
-    return gulp.src(libTsConfig)
-      .pipe(useTsConfig.lint({
-        tsLintOptions: {
-          formatter: "verbose"
-        }
-      }));
+  return gulp.src(libTsConfig)
+    .pipe(useTsConfig.lint({
+      tsLintOptions: {
+        formatter: "verbose"
+      }
+    }));
 });
 
 gulp.task('lib:clean', () => {
