@@ -22,6 +22,12 @@ gulp.task('lib:lint', function() {
       formatter: "verbose"
     }))
     .pipe(tslint.report())
+    return gulp.src(libTsConfig)
+      .pipe(useTsConfig.lint({
+        tsLintOptions: {
+          formatter: "verbose"
+        }
+      }));
 });
 
 gulp.task('lib:clean', () => {
