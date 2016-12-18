@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/franckLdx/node-duckduckgo#readme",
   "devDependencies": {
+    "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.33",
     "chai": "^3.5.0",
     "del": "^2.2.2",
@@ -37,6 +38,7 @@
     "typescript": "^2.0.10"
   },
   "dependencies": {
+    "@types/request": "0.0.36",
     "gulp-use-tsconfig": "^1.1.0"
   }
 }

@@ -18,11 +18,7 @@ const TEST_CONFIG = {
 
 gulp.task('lib:lint', function() {
   return gulp.src(libTsConfig)
-    .pipe(useTsConfig.lint({
-      tsLintOptions: {
-        formatter: "verbose"
-      }
-    }));
+    .pipe(useTsConfig.lint());
 });
 
 gulp.task('lib:clean', () => {
@@ -37,10 +33,15 @@ gulp.task('lib:build', ['lib:clean', 'lib:lint'], () => {
 
 gulp.task('test:clean', () => {
   return gulp.src(testTsConfig)
-    .pipe(useTsConfig.build());
+    .pipe(useTsConfig.clean());
 });
 
-gulp.task('test:build', ['lib:build'], () => {
+gulp.task('test:lint', function() {
+  return gulp.src(testTsConfig)
+    .pipe(useTsConfig.lint());
+});
+
+gulp.task('test:build', ['test:clean', 'test:lint', 'lib:build'], () => {
   return gulp.src(testTsConfig)
     .pipe(useTsConfig.build());
 });
@@ -49,14 +50,14 @@ gulp.task('test:coverage:clean', function() {
   return del(TEST_CONFIG.coverageDir);
 });
 
-gulp.task('test:instrument', ['test:build'], function () {
+gulp.task('test:instrument', ['lib:build'], function () {
   return gulp.src('/lib/**/*.js')
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['test:coverage:clean', 'test:instrument'], function () {
-  return gulp.src('/lib/**/*.js')
+gulp.task('test', ['test:coverage:clean', 'test:build', 'test:instrument'], function () {
+  return gulp.src('./testTmp/**/*Test.js')
     .pipe(mocha())
     .pipe(istanbul.writeReports({
       reporters: [ 'json' ],
