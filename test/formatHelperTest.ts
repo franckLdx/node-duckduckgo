@@ -11,6 +11,7 @@ describe("Formater test", function() {
   });
 
   it("Xml ", function() {
-    format.getFormatter("xml");
+    const formatter = format.getFormatter("xml");
+    formatter.toAllowedFormat().should.be.deep.equal("xml");
   });
 });

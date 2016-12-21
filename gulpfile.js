@@ -23,7 +23,7 @@ gulp.task('lib:lint', function() {
 
 gulp.task('lib:clean', () => {
   return gulp.src(libTsConfig)
-    .pipe(useTsConfig.build());
+    .pipe(useTsConfig.clean());
 });
 
 gulp.task('lib:build', ['lib:clean', 'lib:lint'], () => {
@@ -41,7 +41,7 @@ gulp.task('test:lint', function() {
     .pipe(useTsConfig.lint());
 });
 
-gulp.task('test:build', ['test:clean', 'test:lint', 'lib:build'], () => {
+gulp.task('test:build', ['lib:build', 'test:clean', 'test:lint'], () => {
   return gulp.src(testTsConfig)
     .pipe(useTsConfig.build());
 });
@@ -51,7 +51,7 @@ gulp.task('test:coverage:clean', function() {
 });
 
 gulp.task('test:instrument', ['lib:build'], function () {
-  return gulp.src('/lib/**/*.js')
+  return gulp.src(['/lib/**/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
@@ -68,6 +68,7 @@ gulp.task('test', ['test:coverage:clean', 'test:build', 'test:instrument'], func
 function remapCoverageFiles() {
     return gulp.src('./coverage/coverage-final.json')
     .pipe(remapIstanbul({
+        basePath: './testTmp',
         reports: {
             'html': TEST_CONFIG.coverageDir,
             'text': process.output,
