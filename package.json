@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@types/request": "0.0.36",
-    "gulp-use-tsconfig": "^1.1.0"
+    "gulp-use-tsconfig": "^1.1.2",
+    "query-string-builder": "0.0.1"
   }
 }

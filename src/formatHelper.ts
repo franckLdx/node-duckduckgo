@@ -1,8 +1,12 @@
 export type allowedFormat = "json"|"xml";
 
+export interface IQueryFormat {
+  format: string;
+  pretty?: number;
+}
+
 export interface IFormater {
-  getFormatQueryParam(): string;
-  toAllowedFormat(): allowedFormat;
+  buildQueryParam(builder: any): void;
 }
 
 export function getFormatter(format: allowedFormat): IFormater {
@@ -16,30 +20,22 @@ export function getFormatter(format: allowedFormat): IFormater {
 
 export class JsonFormat implements IFormater {
   private readonly format: allowedFormat = "json";
-  private prettifyResult = 0 | 1;
-
-  getFormatQueryParam() {
-    return `$format&pretty=1`;
-  }
+  private prettifyResult: 0 | 1 = 0;
 
   set pretty(pretty: 0 | 1) {
     this.prettifyResult = pretty;
   }
 
-  toAllowedFormat() {
-    return this.format;
+  buildQueryParam(builder: any) {
+    builder.format(this.format);
+    builder.pretty(this.prettifyResult);
   }
 }
-
 
 export class XmlFormat implements IFormater {
   private readonly format: allowedFormat = "xml";
 
-  getFormatQueryParam() {
-    return `$format`;
-  }
-
-  toAllowedFormat() {
-    return this.format;
+  buildQueryParam(builder: any) {
+    builder.format(this.format);
   }
 }
