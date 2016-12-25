@@ -1,13 +1,13 @@
-export type allowedOptionValue = 0|1|undefined;
+export type optionType = 0|1|undefined;
 
 export class OptionHelper {
-  private value: allowedOptionValue = undefined;
+  private value: optionType = undefined;
 
   constructor(private name: string) {
 
   }
 
-  set option(value: allowedOptionValue) {
+  set option(value: optionType) {
     this.value = value;
   }
 

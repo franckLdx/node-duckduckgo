@@ -1,9 +1,6 @@
-export type allowedFormat = "json"|"xml";
 
-export interface IQueryFormat {
-  format: string;
-  pretty?: number;
-}
+import { OptionHelper, optionType } from "./optionHelper";
+export type allowedFormat = "json"|"xml";
 
 export interface IFormater {
   buildQueryParam(builder: any): void;
@@ -20,15 +17,15 @@ export function getFormatter(format: allowedFormat): IFormater {
 
 export class JsonFormat implements IFormater {
   private readonly format: allowedFormat = "json";
-  private prettifyResult: 0 | 1 = 0;
+  private prettify: OptionHelper = new OptionHelper("pretty");
 
-  set pretty(pretty: 0 | 1) {
-    this.prettifyResult = pretty;
+  set pretty(pretty: optionType) {
+    this.prettify.option = pretty;
   }
 
   buildQueryParam(builder: any) {
     builder.format(this.format);
-    builder.pretty(this.prettifyResult);
+    this.prettify.buildQueryParam(builder);
   }
 }
 

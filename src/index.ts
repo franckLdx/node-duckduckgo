@@ -1,6 +1,7 @@
-import { allowedFormat, getFormatter, IFormater } from "./formatHelper";
+import { allowedFormat, getFormatter, IFormater, JsonFormat } from "./formatHelper";
 import { getBuilder } from "./queryBuilder";
-import { OptionHelper, allowedOptionValue } from "./optionHelper";
+import { OptionHelper, optionType } from "./optionHelper";
+import  * as request from "request";
 
 export class Requester {
   private baseUrl = "http://api.duckduckgo.com/";
@@ -13,25 +14,28 @@ export class Requester {
     this.formater = getFormatter(format);
   }
 
-  set no_redirect(value: allowedOptionValue) {
+  set no_redirect(value: optionType) {
     this.noRedirect.option = value;
   }
 
-  set no_html(value: allowedOptionValue) {
+  set no_html(value: optionType) {
     this.noHtml.option = value;
   }
 
-  set skip_disambig(value: allowedOptionValue) {
+  set skip_disambig(value: optionType) {
     this.skipDisambig.option = value;
   }
 
-  request(request: string) {
+  request(search: string) {
+    const foo: JsonFormat = this.formater as JsonFormat;
+    foo.pretty = 1;
     const builder: any = getBuilder();
-    builder.q(request);
+    builder.q(search);
     this.formater.buildQueryParam(builder);
     this.buildQueryOptions(builder);
-    const uri = builder.toString();
-    console.log("**********************", uri);
+    const queryString = builder.toString();
+    console.log("*******", queryString);
+    return request(`${this.baseUrl}?${queryString}`);
   }
 
   private buildQueryOptions(builder: any) {
@@ -47,4 +51,6 @@ r.request("yellow stone");
 r.skip_disambig = 1;
 r.no_redirect = 1;
 r.no_html = 0;
-r.request("yellow stone");
+r.request("yellow stone").on("data", (data) => {
+  console.log("Data", data.toString());
+});

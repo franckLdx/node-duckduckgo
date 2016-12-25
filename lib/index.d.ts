@@ -1,5 +1,7 @@
+/// <reference types="request" />
 import { allowedFormat } from "./formatHelper";
-import { allowedOptionValue } from "./optionHelper";
+import { optionType } from "./optionHelper";
+import * as request from "request";
 export declare class Requester {
     private baseUrl;
     private formater;
@@ -7,9 +9,9 @@ export declare class Requester {
     private noHtml;
     private skipDisambig;
     format: allowedFormat;
-    no_redirect: allowedOptionValue;
-    no_html: allowedOptionValue;
-    skip_disambig: allowedOptionValue;
-    request(request: string): void;
+    no_redirect: optionType;
+    no_html: optionType;
+    skip_disambig: optionType;
+    request(search: string): request.Request;
     private buildQueryOptions(builder);
 }

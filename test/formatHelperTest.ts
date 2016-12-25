@@ -14,12 +14,12 @@ describe("Formater test", function() {
     actual.should.be.deep.equal(expected);
   }
 
-  it("Json only: should be format=json&pretty=0", function() {
+  it("Json only: should be format=json", function() {
     const builder = getBuilder();
     const formatter = formatHelper.getFormatter("json");
     formatter.buildQueryParam(builder);
     const actual = builder.toString();
-    actual.should.be.deep.equal("format=json&pretty=0");
+    actual.should.be.deep.equal("format=json");
   });
 
   it("Json with not pretty: should be format=json&pretty=0", function() {
