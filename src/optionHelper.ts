@@ -11,6 +11,10 @@ export class OptionHelper {
     this.value = value;
   }
 
+  get option() {
+    return this.value;
+  }
+
   buildQueryParam(builder: any) {
     if (this.value !== undefined) {
       builder[this.name](this.value);
