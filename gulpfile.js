@@ -11,6 +11,7 @@ const useTsConfig = require('gulp-use-tsconfig');
 
 const libTsConfig = './src/tsconfig.json';
 const testTsConfig = './test/tsconfig.json';
+const examplesTsConfig = './examples/ts/tsconfig.json';
 
 const TEST_CONFIG = {
   coverageDir : './coverage',
@@ -76,3 +77,18 @@ function remapCoverageFiles() {
         }
     }));
 }
+
+gulp.task('examples:lint', function() {
+  return gulp.src(examplesTsConfig)
+    .pipe(useTsConfig.lint());
+});
+
+gulp.task('examples:clean', () => {
+  return gulp.src(examplesTsConfig)
+    .pipe(useTsConfig.clean());
+});
+
+gulp.task('examples:build', ['examples:clean', 'examples:lint', 'lib:build'], () => {
+  return gulp.src(examplesTsConfig)
+    .pipe(useTsConfig.build());
+});

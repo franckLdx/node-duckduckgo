@@ -2,7 +2,8 @@
 import { allowedFormat, IFormatter } from "./formatHelper";
 import { optionType } from "./optionHelper";
 import * as request from "request";
-export { IFormatter } from "./formatHelper";
+export { IFormatter, JsonFormatter } from "./formatHelper";
+export { RequestCallback } from "request";
 export declare class Requester {
     private baseUrl;
     private _formatter;

@@ -5,14 +5,14 @@ export interface IFormatter {
     getFormat(): allowedFormat;
 }
 export declare function getFormatter(format: allowedFormat): IFormatter;
-export declare class JsonFormat implements IFormatter {
+export declare class JsonFormatter implements IFormatter {
     private readonly format;
     private prettify;
     pretty: optionType;
     buildQueryParam(builder: any): void;
     getFormat(): allowedFormat;
 }
-export declare class XmlFormat implements IFormatter {
+export declare class XmlFormatter implements IFormatter {
     private readonly format;
     buildQueryParam(builder: any): void;
     getFormat(): allowedFormat;

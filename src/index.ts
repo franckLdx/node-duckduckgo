@@ -1,9 +1,10 @@
-import { allowedFormat, getFormatter, IFormatter, JsonFormat } from "./formatHelper";
+import { allowedFormat, getFormatter, IFormatter, JsonFormatter } from "./formatHelper";
 import { getBuilder } from "./queryBuilder";
 import { OptionHelper, optionType } from "./optionHelper";
 import  * as request from "request";
 
-export { IFormatter } from "./formatHelper";
+export { IFormatter, JsonFormatter } from "./formatHelper";
+export { RequestCallback} from "request";
 
 export class Requester {
   private baseUrl = "http://api.duckduckgo.com/";

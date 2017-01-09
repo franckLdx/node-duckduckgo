@@ -10,13 +10,13 @@ export interface IFormatter {
 export function getFormatter(format: allowedFormat): IFormatter {
   switch (format) {
     case "json":
-      return new JsonFormat();
+      return new JsonFormatter();
     case "xml":
-      return new XmlFormat();
+      return new XmlFormatter();
   }
 }
 
-export class JsonFormat implements IFormatter {
+export class JsonFormatter implements IFormatter {
   private readonly format: allowedFormat = "json";
   private prettify: OptionHelper = new OptionHelper("pretty");
 
@@ -36,7 +36,7 @@ export class JsonFormat implements IFormatter {
   getFormat() { return this.format; }
 }
 
-export class XmlFormat implements IFormatter {
+export class XmlFormatter implements IFormatter {
   private readonly format: allowedFormat = "xml";
 
   buildQueryParam(builder: any) {

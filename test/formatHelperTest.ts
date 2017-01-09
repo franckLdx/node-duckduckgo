@@ -18,7 +18,7 @@ describe("Formater test", function() {
   it("Json with not pretty: should be format=json&pretty=0", function() {
     const builder = getBuilder();
     const formatter = formatHelper.getFormatter("json");
-    const jsonFormatter = formatter as formatHelper.JsonFormat;
+    const jsonFormatter = formatter as formatHelper.JsonFormatter;
     jsonFormatter.pretty = 0;
     formatter.buildQueryParam(builder);
     const actual = builder.toString();
@@ -29,7 +29,7 @@ describe("Formater test", function() {
   it("Json with pretty: should be format=json&pretty=1", function() {
     const builder = getBuilder();
     const formatter = formatHelper.getFormatter("json");
-    const jsonFormatter = formatter as formatHelper.JsonFormat;
+    const jsonFormatter = formatter as formatHelper.JsonFormatter;
     jsonFormatter.pretty = 1;
     formatter.buildQueryParam(builder);
     const actual = builder.toString();

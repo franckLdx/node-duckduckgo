@@ -11,7 +11,7 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormat;
+      const jsonFormatter = formatter as formatHelper.JsonFormatter;
       should.not.exist(jsonFormatter.pretty);
     });
 
@@ -19,7 +19,7 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormat;
+      const jsonFormatter = formatter as formatHelper.JsonFormatter;
       should.not.exist(jsonFormatter.pretty);
     });
 
@@ -27,7 +27,7 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormat;
+      const jsonFormatter = formatter as formatHelper.JsonFormatter;
       jsonFormatter.pretty = 0;
       jsonFormatter.pretty.should.be.deep.equal(0);
     });
@@ -36,14 +36,14 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormat;
+      const jsonFormatter = formatter as formatHelper.JsonFormatter;
       jsonFormatter.pretty = 1;
       jsonFormatter.pretty.should.be.deep.equal(1);
     });
 
     it("Set XML format, should be XML", function() {
       const requester = new Requester();
-      /*const jsonFormatter = formatter as formatHelper.JsonFormat;
+      /*const jsonFormatter = formatter as formatHelper.JsonFormatter;
       requester.format.should.be.deep.equal("json");
       should.not.exist(jsonFormatter.pretty);*/
     });
@@ -54,7 +54,7 @@ describe("Requester test", function() {
     it("Default format, format should be undefined", function() {
       const requester = new Requester();
       should.not.exist(requester.no_redirect);
-            /*const jsonFormatter = formatter as formatHelper.JsonFormat;
+            /*const jsonFormatter = formatter as formatHelper.JsonFormatter;
       should.not.exist(jsonFormatter.pretty);*/
     });
 
