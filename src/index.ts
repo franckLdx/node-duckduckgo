@@ -13,6 +13,9 @@ export class Requester {
   private noHtml = new OptionHelper("no_html");
   private skipDisambig = new OptionHelper("skip_disambig");
 
+  constructor(private appName = "node-duckduckgo") {
+  }
+
   set format(format: allowedFormat) {
     this._formatter = getFormatter(format);
   }
@@ -52,6 +55,7 @@ export class Requester {
   request(search: string, callBack?: request.RequestCallback) {
     const builder: any = getBuilder();
     builder.q(search);
+    builder.t(this.appName);
     this._formatter.buildQueryParam(builder);
     this.buildQueryOptions(builder);
     const queryString = builder.toString();

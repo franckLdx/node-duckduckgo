@@ -20,5 +20,8 @@ export function getBuilder(): any {
     "skip_disambig": {
       "method": "set",
     },
+    "t": {
+      "method": "set",
+    }
   });
 };

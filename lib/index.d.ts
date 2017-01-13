@@ -5,11 +5,13 @@ import * as request from "request";
 export { IFormatter, JsonFormatter } from "./formatHelper";
 export { RequestCallback } from "request";
 export declare class Requester {
+    private appName;
     private baseUrl;
     private _formatter;
     private noRedirect;
     private noHtml;
     private skipDisambig;
+    constructor(appName?: string);
     format: allowedFormat;
     readonly formatter: IFormatter;
     no_redirect: optionType;
