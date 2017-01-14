@@ -11,7 +11,7 @@ requester.request("bart simpsons", (err, response, body) => {
   console.log(body);
 });
 
-requester.request("simpsons")
+requester.request("bart simpsons")
   .on("data", (data) => {
     console.log(data.toString());
   })
