@@ -29,19 +29,19 @@ requester.request("bart simpsons", (err, response, body) => {
 ```
 
 ## API
-1. The requester object takes an application name in parameter:
+* The requester object takes an application name in parameter:
 ```javascript
 const requester = new Requester(<YOUR APP NAME>);
 ```
 
-2. If needed, configure the requester options:
+* If needed, configure the requester options:
 ```javascript
 requester.no_html = 1;
 requester.no_redirect = 1;
 ```
 (for information about this options see [Duck Duck GO API documentation](https://api.duckduckgo.com/api)
 
-3. Execute your request and et your result
+* Execute your request and et your result
 This lib is backed by [Request](https://www.npmjs.com/package/request). Results can be got by either by Request's call back or by stream:
  ```javascript
 requester.request("bart simpsons", (err, response, body) => {
