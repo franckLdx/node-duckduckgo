@@ -68,21 +68,3 @@ export class Requester {
     this.skipDisambig.buildQueryParam(builder);
   }
 }
-/*
-import { parse } from "jsonstream";
-const foo = parse("RelatedTopics.*.Results");
-const r1 = new Requester();
-r1.request("typescript").on("data", (data: Buffer) => {
-  console.log("Data", data.toString());
-});
-/*r1.request("typescript", (err, result) => {
-  console.log(result);
-});*/
-
-/*const r2 = new Requester();
-r2.skip_disambig = 1;
-r2.no_redirect = 1;
-r2.no_html = 1;
-r2.request("yellow stone").on("data", (data) => {
-  console.log("*********Data", data.toString());
-});*/
