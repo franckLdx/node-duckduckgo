@@ -40,3 +40,8 @@ requester.request("bart simpsons", (err, response, body) => {
   }
   console.log(body);
 });
+
+requester.request("bart simpsons").on("data", response => { 
+  console.log(response.toString());
+});
+  

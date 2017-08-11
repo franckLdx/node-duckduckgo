@@ -24,4 +24,4 @@ export function getBuilder(): any {
       "method": "set",
     }
   });
-};
+}

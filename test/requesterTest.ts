@@ -2,8 +2,8 @@ import * as mocha from "mocha";
 import * as chai from "chai";
 const should = chai.should();
 
-import { Requester } from "../lib//index";
-import * as formatHelper from "../lib/formatHelper";
+import { Requester } from "../lib/index";
+import { JsonFormatter, XmlFormatter } from "../lib/formatHelper";
 
 describe("Requester test", function() {
   describe("Format test", function() {
@@ -11,7 +11,8 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormatter;
+      formatter.getFormat().should.be.deep.equal("json");
+      const jsonFormatter = formatter as JsonFormatter;
       should.not.exist(jsonFormatter.pretty);
     });
 
@@ -19,7 +20,8 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormatter;
+      formatter.getFormat().should.be.deep.equal("json");
+      const jsonFormatter = formatter as JsonFormatter;
       should.not.exist(jsonFormatter.pretty);
     });
 
@@ -27,7 +29,7 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormatter;
+      const jsonFormatter = formatter as JsonFormatter;
       jsonFormatter.pretty = 0;
       jsonFormatter.pretty.should.be.deep.equal(0);
     });
@@ -36,26 +38,23 @@ describe("Requester test", function() {
       const requester = new Requester();
       requester.format.should.be.deep.equal("json");
       const formatter = requester.formatter;
-      const jsonFormatter = formatter as formatHelper.JsonFormatter;
+      const jsonFormatter = formatter as JsonFormatter;
       jsonFormatter.pretty = 1;
       jsonFormatter.pretty.should.be.deep.equal(1);
     });
 
     it("Set XML format, should be XML", function() {
       const requester = new Requester();
-      /*const jsonFormatter = formatter as formatHelper.JsonFormatter;
-      requester.format.should.be.deep.equal("json");
-      should.not.exist(jsonFormatter.pretty);*/
+      requester.format = "xml";
+      requester.formatter.getFormat().should.be.deep.equal("xml");
     });
 
   });
 
   describe("No_redirect test", function() {
-    it("Default format, format should be undefined", function() {
+    it("Default format, redirect should be undefined", function() {
       const requester = new Requester();
       should.not.exist(requester.no_redirect);
-            /*const jsonFormatter = formatter as formatHelper.JsonFormatter;
-      should.not.exist(jsonFormatter.pretty);*/
     });
 
     it("Set no_redirect to 0, this option should be 0", function() {
