@@ -1,5 +1,5 @@
-import { optionType } from "./optionHelper";
-export declare type allowedFormat = "json" | "xml";
+import { optionType } from './optionHelper';
+export declare type allowedFormat = 'json' | 'xml';
 export interface IFormatter {
     buildQueryParam(builder: any): void;
     getFormat(): allowedFormat;

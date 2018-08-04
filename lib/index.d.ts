@@ -1,9 +1,8 @@
-/// <reference types="request" />
-import { allowedFormat, IFormatter } from "./formatHelper";
-import { optionType } from "./optionHelper";
-import * as request from "request";
-export { IFormatter, JsonFormatter } from "./formatHelper";
-export { RequestCallback } from "request";
+import * as request from 'request';
+import { allowedFormat, IFormatter } from './formatHelper';
+import { optionType } from './optionHelper';
+export { IFormatter, JsonFormatter } from './formatHelper';
+export { RequestCallback } from 'request';
 export declare class Requester {
     private appName;
     private baseUrl;
@@ -12,11 +11,11 @@ export declare class Requester {
     private noHtml;
     private skipDisambig;
     constructor(appName?: string);
+    request(search: string, callBack?: request.RequestCallback): request.Request;
+    private buildQueryOptions;
     format: allowedFormat;
     readonly formatter: IFormatter;
     no_redirect: optionType;
     no_html: optionType;
     skip_disambig: optionType;
-    request(search: string, callBack?: request.RequestCallback): request.Request;
-    private buildQueryOptions(builder);
 }

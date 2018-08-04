@@ -1,47 +1,53 @@
-
-import { OptionHelper, optionType } from "./optionHelper";
-export type allowedFormat = "json"|"xml";
+import { OptionHelper, optionType } from './optionHelper';
+export type allowedFormat = 'json' | 'xml';
 
 export interface IFormatter {
+
   buildQueryParam(builder: any): void;
   getFormat(): allowedFormat;
 }
 
 export function getFormatter(format: allowedFormat): IFormatter {
   switch (format) {
-    case "json":
+    case 'json':
       return new JsonFormatter();
-    case "xml":
+    case 'xml':
       return new XmlFormatter();
+    default:
+      throw new Error(`Unsupported format ${format}`);
   }
 }
 
 export class JsonFormatter implements IFormatter {
-  private readonly format: allowedFormat = "json";
-  private prettify: OptionHelper = new OptionHelper("pretty");
+  private readonly format: allowedFormat = 'json';
+  private prettify: OptionHelper = new OptionHelper('pretty');
 
   set pretty(pretty: optionType) {
     this.prettify.option = pretty;
   }
 
-  get pretty() {
+  get pretty(): optionType {
     return this.prettify.option;
   }
 
-  buildQueryParam(builder: any) {
+  public buildQueryParam(builder: any) {
     builder.format(this.format);
     this.prettify.buildQueryParam(builder);
   }
 
-  getFormat() { return this.format; }
+  public getFormat() {
+    return this.format;
+  }
 }
 
 export class XmlFormatter implements IFormatter {
-  private readonly format: allowedFormat = "xml";
+  private readonly format: allowedFormat = 'xml';
 
-  buildQueryParam(builder: any) {
+  public buildQueryParam(builder: any) {
     builder.format(this.format);
   }
 
-  getFormat() { return this.format; }
+  public getFormat() {
+    return this.format;
+  }
 }

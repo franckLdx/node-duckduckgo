@@ -1,50 +1,175 @@
 {
+  "extends": "tslint-clean-code",
   "rules": {
-    "class-name": true,
-    "comment-format": [
+    "forin": true,
+    "id-length": [
       true,
-      "check-space"
+      [
+        "q",
+        "t"
+      ]
     ],
+    "label-position": true,
+    "max-func-args": [
+      true,
+      3
+    ],
+    "min-class-cohesion": [
+      true,
+      0.2
+    ],
+    "newspaper-order": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "log",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-debugger": true,
+    "no-duplicate-super": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-flag-args": true,
+    "no-for-each-push": true,
+    "no-import-side-effect": true,
+    "no-invalid-template-strings": true,
+    "no-invalid-this": true,
+    "no-map-without-usage": true,
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-reference-import": true,
+    "no-sparse-arrays": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-unnecessary-callback-wrapper": true,
+    "no-unnecessary-initializer": true,
+    "no-unsafe-finally": true,
+    "no-unused-expression": true,
+    "radix": true,
+    "switch-default": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "try-catch-first": true,
+    "use-isnan": true,
+    "adjacent-overload-signatures": true,
+    "array-type": [
+      true,
+      "array"
+    ],
+    "arrow-parens": false,
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": true,
+    "completed-docs": [
+      true,
+      "classes"
+    ],
+    "interface-name": true,
+    "jsdoc-format": true,
+    "max-classes-per-file": [
+      true,
+      3
+    ],
+    "max-file-line-count": true,
+    "max-line-length": [
+      true,
+      140
+    ],
+    "member-access": true,
+    "member-ordering": [
+      true,
+      {
+        "order": "fields-first"
+      }
+    ],
+    "new-parens": true,
+    "no-commented-out-code": true,
+    "no-complex-conditionals": true,
+    "no-construct": true,
+    "no-default-export": true,
+    "no-empty-interface": true,
+    "no-feature-envy": [
+      true,
+      1,
+      [
+        "_"
+      ]
+    ],
+    "no-inferrable-types": false,
+    "no-null-keyword": false,
+    "no-require-imports": true,
+    "no-shadowed-variable": true,
+    "no-unnecessary-qualifier": true,
+    "no-var-keyword": true,
+    "no-var-requires": true,
+    "no-void-expression": true,
+    "object-literal-sort-keys": false, // turn object-literal-sort-keys off and sort keys in a meaningful manner
+    "one-variable-per-declaration": true,
+    "only-arrow-functions": false, // there are many valid reasons to declare a function
+    "ordered-imports": true,
+    "prefer-const": true,
+    "prefer-dry-conditionals": true,
+    "prefer-for-of": true,
+    "prefer-method-signature": true,
+    "prefer-template": true,
+    "return-undefined": false, // this actually affect the readability of the code
+    "unified-signatures": true,
+    "variable-name": true,
+    "align": [
+      true,
+      "parameters",
+      "arguments",
+      "statements"
+    ],
+    "curly": true,
+    "eofline": true,
+    "import-spacing": true,
     "indent": [
       true,
       "spaces"
     ],
-    "no-duplicate-variable": true,
-    "no-eval": true,
-    "no-internal-module": true,
+    "linebreak-style": true,
+    "newline-before-return": true,
+    "no-consecutive-blank-lines": true,
     "no-trailing-whitespace": true,
-    "no-unsafe-finally": true,
-    "no-var-keyword": true,
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
     "one-line": [
       true,
       "check-open-brace",
+      "check-catch",
+      "check-else",
       "check-whitespace"
     ],
     "quotemark": [
       true,
-      "double"
+      "single"
     ],
     "semicolon": [
       true,
       "always"
     ],
-    "triple-equals": [
+    "trailing-comma": [
       true,
-      "allow-null-check"
-    ],
-    "typedef-whitespace": [
-      true, {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
+      {
+        "singleline": "never",
+        "multiline": "never"
       }
-    ],
-    "variable-name": [
-      true,
-      "ban-keywords"
-    ],
+    ], // forcing trailing commas for multi-line
+    // lists results in lists that are easier to reorder and version control diffs that are more clear.
+    // Many teams like to have multiline be 'always'. There is no clear consensus on this rule but the
+    // internal MS JavaScript coding standard does discourage it.
+    "typedef-whitespace": false,
     "whitespace": [
       true,
       "check-branch",
@@ -52,6 +177,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ]
+    ],
+    "cyclomatic-complexity": true
   }
 }

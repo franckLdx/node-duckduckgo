@@ -1,19 +1,41 @@
-import { allowedFormat, getFormatter, IFormatter, JsonFormatter } from "./formatHelper";
-import { getBuilder } from "./queryBuilder";
-import { OptionHelper, optionType } from "./optionHelper";
-import  * as request from "request";
+import * as request from 'request';
+import {
+  allowedFormat,
+  getFormatter,
+  IFormatter,
+  JsonFormatter
+} from './formatHelper';
+import { OptionHelper, optionType } from './optionHelper';
+import { getBuilder } from './queryBuilder';
 
-export { IFormatter, JsonFormatter } from "./formatHelper";
-export { RequestCallback} from "request";
+export { IFormatter, JsonFormatter } from './formatHelper';
+export { RequestCallback } from 'request';
 
 export class Requester {
-  private baseUrl = "http://api.duckduckgo.com/";
-  private _formatter = getFormatter("json");
-  private noRedirect = new OptionHelper("no_redirect");
-  private noHtml = new OptionHelper("no_html");
-  private skipDisambig = new OptionHelper("skip_disambig");
+  private baseUrl = 'http://api.duckduckgo.com/';
+  // tslint:disable-next-line:variable-name
+  private _formatter = getFormatter('json');
+  private noRedirect = new OptionHelper('no_redirect');
+  private noHtml = new OptionHelper('no_html');
+  private skipDisambig = new OptionHelper('skip_disambig');
 
-  constructor(private appName = "node-duckduckgo") {
+  constructor(private appName = 'node-duckduckgo') { }
+
+  public request(search: string, callBack?: request.RequestCallback) {
+    const builder = getBuilder();
+    builder.q(search);
+    builder.t(this.appName);
+    this._formatter.buildQueryParam(builder);
+    this.buildQueryOptions(builder);
+    const queryString = builder.toString();
+
+    return request(`${this.baseUrl}?${queryString}`, callBack);
+  }
+
+  private buildQueryOptions(builder: any) {
+    this.noRedirect.buildQueryParam(builder);
+    this.noHtml.buildQueryParam(builder);
+    this.skipDisambig.buildQueryParam(builder);
   }
 
   set format(format: allowedFormat) {
@@ -50,21 +72,5 @@ export class Requester {
 
   get skip_disambig() {
     return this.skipDisambig.option;
-  }
-
-  request(search: string, callBack?: request.RequestCallback) {
-    const builder: any = getBuilder();
-    builder.q(search);
-    builder.t(this.appName);
-    this._formatter.buildQueryParam(builder);
-    this.buildQueryOptions(builder);
-    const queryString = builder.toString();
-    return request(`${this.baseUrl}?${queryString}`, callBack);
-  }
-
-  private buildQueryOptions(builder: any) {
-    this.noRedirect.buildQueryParam(builder);
-    this.noHtml.buildQueryParam(builder);
-    this.skipDisambig.buildQueryParam(builder);
   }
 }
