@@ -1,6 +1,6 @@
 {
   "name": "node-duckduckgo",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "DuckDuckGo client for node",
   "main": "lib/index.js",
   "typings": "lib/index",
