@@ -69,8 +69,7 @@
     "class-name": true,
     "comment-format": true,
     "completed-docs": [
-      true,
-      "classes"
+      false
     ],
     "interface-name": true,
     "jsdoc-format": true,
