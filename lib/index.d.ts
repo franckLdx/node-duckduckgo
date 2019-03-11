@@ -1,7 +1,6 @@
 import * as request from 'request';
 import { allowedFormat, IFormatter } from './formatHelper';
 import { optionType } from './optionHelper';
-export { IFormatter, JsonFormatter } from './formatHelper';
 export { RequestCallback } from 'request';
 export declare class Requester {
     private appName;

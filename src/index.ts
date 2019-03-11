@@ -8,7 +8,6 @@ import {
 import { OptionHelper, optionType } from './optionHelper';
 import { getBuilder } from './queryBuilder';
 
-export { IFormatter, JsonFormatter } from './formatHelper';
 export { RequestCallback } from 'request';
 
 export class Requester {

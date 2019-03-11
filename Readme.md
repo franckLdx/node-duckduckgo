@@ -41,7 +41,7 @@ requester.no_redirect = 1;
 ```
 (for information about this options see [Duck Duck GO API documentation](https://api.duckduckgo.com/api)
 
-* Execute your request and et your result
+* Execute your request and get your result
 This lib is backed by [Request](https://www.npmjs.com/package/request). Results can be got by either by Request's call back or by stream:
  ```javascript
 requester.request("bart simpsons", (err, response, body) => {

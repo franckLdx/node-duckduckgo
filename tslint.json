@@ -136,7 +136,7 @@
       "spaces"
     ],
     "linebreak-style": true,
-    "newline-before-return": true,
+    "newline-before-return": false,
     "no-consecutive-blank-lines": true,
     "no-trailing-whitespace": true,
     "object-literal-key-quotes": [
