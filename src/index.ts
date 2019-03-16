@@ -1,4 +1,5 @@
 import * as request from 'request';
+import { RequestCallback, RequestResponse } from 'request';
 import {
   allowedFormat,
   getFormatter,
@@ -8,7 +9,7 @@ import {
 import { OptionHelper, optionType } from './optionHelper';
 import { getBuilder } from './queryBuilder';
 
-export { RequestCallback } from 'request';
+export { JsonFormatter, RequestCallback, RequestResponse };
 
 export class Requester {
   private baseUrl = 'http://api.duckduckgo.com/';
@@ -20,7 +21,19 @@ export class Requester {
 
   constructor(private appName = 'node-duckduckgo') { }
 
-  public request(search: string, callBack?: request.RequestCallback) {
+  public requestP(search: string): Promise<RequestResponse> {
+    return new Promise<RequestResponse>((resolve, reject) => {
+      const cb: RequestCallback = (error, response, body: any) => {
+        if (error !== undefined && error !== null) {
+          reject(error);
+        }
+        resolve(response);
+      };
+      this.request(search, cb);
+    });
+  }
+
+  public request(search: string, callBack?: RequestCallback) {
     const builder = getBuilder();
     builder.q(search);
     builder.t(this.appName);

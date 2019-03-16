@@ -1,9 +1,9 @@
 // tslint:disable:no-console
-import { JsonFormatter, Requester } from '../../lib//index';
+import { JsonFormatter, Requester, RequestResponse } from '../../lib/';
 
 // Result as default JSON
 const requester = new Requester('node-duckduckgo-example');
-requester.request('bart simpsons', (err, response, body) => {
+requester.request('bart simpsons', (err: any, response: RequestResponse, body: any) => {
   if (err) {
     console.log(err);
     return;
@@ -13,10 +13,10 @@ requester.request('bart simpsons', (err, response, body) => {
 });
 
 requester.request('simpsons')
-  .on('data', (data) => {
+  .on('data', (data: Buffer) => {
     console.log(data.toString());
   })
-  .on('error', (err) => {
+  .on('error', (err: any) => {
     console.log(err);
   });
 
@@ -24,7 +24,7 @@ requester.request('simpsons')
 const formatter = requester.formatter;
 const jsonFormatter = formatter as JsonFormatter;
 jsonFormatter.pretty = 1;
-requester.request('simpsons', (err, response, body) => {
+requester.request('simpsons', (err: any, response: RequestResponse, body: any) => {
   if (err) {
     console.log(err);
     return;
@@ -35,7 +35,7 @@ requester.request('simpsons', (err, response, body) => {
 // pretty JSON, no_html and no no_redirect
 requester.no_html = 1;
 requester.no_redirect = 1;
-requester.request('simpsons', (err, response, body) => {
+requester.request('simpsons', (err: any, response: RequestResponse, body: any) => {
   if (err) {
     console.log(err);
     return;
