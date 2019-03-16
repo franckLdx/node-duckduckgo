@@ -1,7 +1,6 @@
 // tslint:disable:no-console
 const { Requester } = require('../../lib/');
 
-// Result as default JSON
 async function get() {
   try {
     const requester = new Requester('node-duckduckgo-example');

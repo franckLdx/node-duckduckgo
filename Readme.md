@@ -5,6 +5,37 @@ This one has been written in typescript (2.x or above) and can be used by javasc
 ## Examples
 * TypeScript:
 ```javascript
+import { Requester } from '../../lib/';
+
+// Result as default JSON
+async function get() {
+  try {
+    const requester = new Requester('node-duckduckgo-example');
+    const response = await requester.requestP('bart simpsons');
+    console.log(response.toJSON());
+  } catch (err) {
+    console.error('oups', err);
+  }
+}
+```
+* Javascript:
+```javascript
+const { Requester } = require('../../lib/');
+
+async function get() {
+  try {
+    const requester = new Requester('node-duckduckgo-example');
+    const response = await requester.requestP('bart simpsons');
+    console.log(response.toJSON());
+  } catch (err) {
+    console.error('oups', err);
+  }
+}
+```
+
+You can also use "old style" with callback:
+* TypeScript:
+```javascript
 import { Requester } from "node-duckduckgo";
 const requester = new Requester("node-duckduckgo-example");
 requester.request("bart simpsons", (err, response, body) => {
@@ -42,7 +73,19 @@ requester.no_redirect = 1;
 (for information about this options see [Duck Duck GO API documentation](https://api.duckduckgo.com/api)
 
 * Execute your request and get your result
-This lib is backed by [Request](https://www.npmjs.com/package/request). Results can be got by either by Request's call back or by stream:
+This lib is backed by [Request](https://www.npmjs.com/package/request). Results can be got by either by async call, callback or by stream:
+ ```javascript
+ async function get() {
+  try {
+    const requester = new Requester('node-duckduckgo-example');
+    const response = await requester.requestP('bart simpsons');
+    console.log(response.toJSON());
+  } catch (err) {
+    console.error('oups', err);
+  }
+}
+```
+
  ```javascript
 requester.request("bart simpsons", (err, response, body) => {
   if (err) {
@@ -52,6 +95,7 @@ requester.request("bart simpsons", (err, response, body) => {
   console.log(body);
 });
 ```
+
 ```javascript
 requester.request("bart simpsons")
   .on("data", (data) => {
