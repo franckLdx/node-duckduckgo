@@ -69,6 +69,7 @@ const requester = new Requester(<YOUR APP NAME>);
 ```javascript
 requester.no_html = 1;
 requester.no_redirect = 1;
+requester.safe_search = safeSearch_off; // safeSearch_moderate or safeSearch_strict, default: safeSearch_strict;
 ```
 (for information about this options see [Duck Duck GO API documentation](https://api.duckduckgo.com/api)
 

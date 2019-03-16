@@ -1,15 +1,11 @@
-export type optionType = 0 | 1 | undefined;
+export class OptionHelper<OptionType> {
+  constructor(private name: string, private value?: OptionType) { }
 
-export class OptionHelper {
-  private value: optionType = undefined;
-
-  constructor(private name: string) { }
-
-  public set option(value: optionType) {
+  public set option(value: OptionType) {
     this.value = value;
   }
 
-  public get option() {
+  public get option(): OptionType {
     return this.value;
   }
 
@@ -19,3 +15,6 @@ export class OptionHelper {
     }
   }
 }
+
+export type StdOptionValues = 0 | 1 | undefined;
+export type SafeSearchValues = 1 | -1 | -2;

@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-const { Requester } = require('../../lib/');
+const { Requester, safeSearch_off } = require('../../lib/');
 
 async function get() {
   try {

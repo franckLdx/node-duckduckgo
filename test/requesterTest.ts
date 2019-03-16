@@ -2,7 +2,13 @@ import * as chai from 'chai';
 const should = chai.should();
 
 import { JsonFormatter } from '../lib/formatHelper';
-import { Requester } from '../lib/index';
+import {
+  Requester,
+  safeSearch_moderate,
+  safeSearch_off,
+  safeSearch_strict
+} from '../lib/index';
+import { SafeSearchValues } from '../lib/optionHelper';
 
 describe('Requester test', function () {
   describe('Format test', function () {
@@ -105,5 +111,21 @@ describe('Requester test', function () {
       requester.skip_disambig = 1;
       requester.skip_disambig.should.be.deep.equal(1);
     });
+  });
+
+  describe('safeSearch test', function () {
+    interface ISafeSearchData { name: string; value: SafeSearchValues; }
+    const safeSearchData: ISafeSearchData[] = [
+      { name: 'strict', value: safeSearch_strict },
+      { name: 'moderate', value: safeSearch_moderate },
+      { name: 'off', value: safeSearch_off }
+    ];
+    safeSearchData.forEach(({ name, value }) =>
+      it(`safeSearch should work with option ${name}`, () => {
+        const requester = new Requester();
+        requester.safe_search = value;
+        requester.safe_search.should.be.deep.equal(value);
+      })
+    );
   });
 });

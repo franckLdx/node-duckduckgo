@@ -1,4 +1,4 @@
-import { OptionHelper, optionType } from './optionHelper';
+import { OptionHelper, StdOptionValues } from './optionHelper';
 export type allowedFormat = 'json' | 'xml';
 
 export interface IFormatter {
@@ -20,13 +20,13 @@ export function getFormatter(format: allowedFormat): IFormatter {
 
 export class JsonFormatter implements IFormatter {
   private readonly format: allowedFormat = 'json';
-  private prettify: OptionHelper = new OptionHelper('pretty');
+  private prettify = new OptionHelper<StdOptionValues>('pretty');
 
-  set pretty(pretty: optionType) {
+  set pretty(pretty: StdOptionValues) {
     this.prettify.option = pretty;
   }
 
-  get pretty(): optionType {
+  get pretty(): StdOptionValues {
     return this.prettify.option;
   }
 

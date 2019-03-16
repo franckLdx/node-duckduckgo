@@ -6,18 +6,24 @@ import {
   IFormatter,
   JsonFormatter
 } from './formatHelper';
-import { OptionHelper, optionType } from './optionHelper';
+import { OptionHelper, SafeSearchValues, StdOptionValues } from './optionHelper';
 import { getBuilder } from './queryBuilder';
 
 export { JsonFormatter, RequestCallback, RequestResponse };
 
+export const safeSearch_strict = 1;
+export const safeSearch_moderate = -1;
+export const safeSearch_off = -2;
+
+// tslint:disable-next-line:min-class-cohesion
 export class Requester {
-  private baseUrl = 'https://api.duckduckgo.com/';
+  private _baseUrl = 'https://api.duckduckgo.com/';
   // tslint:disable-next-line:variable-name
   private _formatter = getFormatter('json');
-  private noRedirect = new OptionHelper('no_redirect');
-  private noHtml = new OptionHelper('no_html');
-  private skipDisambig = new OptionHelper('skip_disambig');
+  private _noRedirect = new OptionHelper<StdOptionValues>('no_redirect');
+  private _noHtml = new OptionHelper<StdOptionValues>('no_html');
+  private _skipDisambig = new OptionHelper<StdOptionValues>('skip_disambig');
+  private _safeSearch = new OptionHelper<SafeSearchValues>('kp', safeSearch_strict);
 
   constructor(private appName = 'node-duckduckgo') { }
 
@@ -41,13 +47,14 @@ export class Requester {
     this.buildQueryOptions(builder);
     const queryString = builder.toString();
 
-    return request(`${this.baseUrl}?${queryString}`, callBack);
+    return request(`${this._baseUrl}?${queryString}`, callBack);
   }
 
   private buildQueryOptions(builder: any) {
-    this.noRedirect.buildQueryParam(builder);
-    this.noHtml.buildQueryParam(builder);
-    this.skipDisambig.buildQueryParam(builder);
+    this._noRedirect.buildQueryParam(builder);
+    this._noHtml.buildQueryParam(builder);
+    this._skipDisambig.buildQueryParam(builder);
+    this._safeSearch.buildQueryParam(builder);
   }
 
   set format(format: allowedFormat) {
@@ -62,27 +69,35 @@ export class Requester {
     return this._formatter;
   }
 
-  set no_redirect(value: optionType) {
-    this.noRedirect.option = value;
+  set no_redirect(value: StdOptionValues) {
+    this._noRedirect.option = value;
   }
 
   get no_redirect() {
-    return this.noRedirect.option;
+    return this._noRedirect.option;
   }
 
-  set no_html(value: optionType) {
-    this.noHtml.option = value;
+  set no_html(value: StdOptionValues) {
+    this._noHtml.option = value;
   }
 
   get no_html() {
-    return this.noHtml.option;
+    return this._noHtml.option;
   }
 
-  set skip_disambig(value: optionType) {
-    this.skipDisambig.option = value;
+  set skip_disambig(value: StdOptionValues) {
+    this._skipDisambig.option = value;
   }
 
   get skip_disambig() {
-    return this.skipDisambig.option;
+    return this._skipDisambig.option;
+  }
+
+  set safe_search(value: SafeSearchValues) {
+    this._safeSearch.option = value;
+  }
+
+  get safe_search() {
+    return this._safeSearch.option;
   }
 }

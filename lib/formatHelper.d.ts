@@ -1,4 +1,4 @@
-import { optionType } from './optionHelper';
+import { StdOptionValues } from './optionHelper';
 export declare type allowedFormat = 'json' | 'xml';
 export interface IFormatter {
     buildQueryParam(builder: any): void;
@@ -8,7 +8,7 @@ export declare function getFormatter(format: allowedFormat): IFormatter;
 export declare class JsonFormatter implements IFormatter {
     private readonly format;
     private prettify;
-    pretty: optionType;
+    pretty: StdOptionValues;
     buildQueryParam(builder: any): void;
     getFormat(): allowedFormat;
 }

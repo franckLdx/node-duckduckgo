@@ -121,7 +121,7 @@
     "prefer-template": true,
     "return-undefined": false, // this actually affect the readability of the code
     "unified-signatures": true,
-    "variable-name": true,
+    "variable-name": false,
     "align": [
       true,
       "parameters",
