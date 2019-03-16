@@ -12,7 +12,7 @@ import { getBuilder } from './queryBuilder';
 export { JsonFormatter, RequestCallback, RequestResponse };
 
 export class Requester {
-  private baseUrl = 'http://api.duckduckgo.com/';
+  private baseUrl = 'https://api.duckduckgo.com/';
   // tslint:disable-next-line:variable-name
   private _formatter = getFormatter('json');
   private noRedirect = new OptionHelper('no_redirect');
