@@ -104,11 +104,11 @@
     ],
     "no-inferrable-types": false,
     "no-null-keyword": false,
-    "no-require-imports": true,
+    "no-require-imports": false,
     "no-shadowed-variable": true,
     "no-unnecessary-qualifier": true,
     "no-var-keyword": true,
-    "no-var-requires": true,
+    "no-var-requires": false,
     "no-void-expression": true,
     "object-literal-sort-keys": false, // turn object-literal-sort-keys off and sort keys in a meaningful manner
     "one-variable-per-declaration": true,

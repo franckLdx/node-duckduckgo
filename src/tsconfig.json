@@ -12,6 +12,7 @@
     "inlineSources": false,
     "target": "es6"
   },
+  "allowJs": true,
   "rootDir": ".",
   "include": [
     "**/*.ts"

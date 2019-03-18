@@ -1,4 +1,4 @@
-import * as qsb from 'query-string-builder';
+const qsb = require('query-string-builder');
 
 export function getBuilder(): any {
   return new qsb({
