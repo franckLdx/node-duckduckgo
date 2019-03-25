@@ -7,4 +7,4 @@ export interface SearchOption {
     skipDisambig?: boolean;
     parentalFilter?: ParentalFilter;
 }
-export declare function duckIt(searchQuery: string): Promise<import("axios").AxiosResponse<any>>;
+export declare function duckIt(searchQuery: string, searchOption?: SearchOption): Promise<import("axios").AxiosResponse<any>>;

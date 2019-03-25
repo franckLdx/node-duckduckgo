@@ -32,3 +32,19 @@ task('test:exec', async () => {
 });
 
 taskGroup("test", ["lib", "test:clean", "test:build", "test:exec"]);
+
+task('examples:clean', () => {
+  shell.rm('-rf', './examples/ts/*.map');
+  shell.rm('-rf', './examples/ts/*.d.ts');
+  shell.rm('-rf', './examples/ts/*.js');
+});
+
+task('examples:build', async () => {
+  await run('tsc -b', { cwd: './examples/ts' });
+});
+
+task('examples:exec', async () => {
+  await run('node ./examples/ts/simpsons.js');
+});
+
+taskGroup("examples", ["examples:clean", "examples:build", "examples:exec"]);
