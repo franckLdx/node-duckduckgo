@@ -10,7 +10,7 @@
     "sourceMap": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "target": "es6"
+    "target": "es2018"
   },
   "rootDir": ".",
   "include": [

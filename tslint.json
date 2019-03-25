@@ -71,7 +71,7 @@
     "completed-docs": [
       false
     ],
-    "interface-name": true,
+    "interface-name": false,
     "jsdoc-format": true,
     "max-classes-per-file": [
       true,
