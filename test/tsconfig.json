@@ -10,11 +10,14 @@
     "sourceMap": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "target": "es6"
+    "target": "es2018"
   },
   "rootDir": ".",
   "include": [
     "**/*.ts"
+  ],
+  "typeRoots": [
+    "./node_modules/@types"
   ],
   "compileOnSave": false,
   "formatCodeOptions": {

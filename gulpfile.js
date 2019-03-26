@@ -14,30 +14,15 @@ const testTsConfig = './test/tsconfig.json';
 const examplesTsConfig = './examples/ts/tsconfig.json';
 
 const TEST_CONFIG = {
-  coverageDir : './coverage',
+  coverageDir: './coverage',
 }
-
-gulp.task('lib:lint', function() {
-  return gulp.src(libTsConfig)
-    .pipe(useTsConfig.lint());
-});
-
-gulp.task('lib:clean', () => {
-  return gulp.src(libTsConfig)
-    .pipe(useTsConfig.clean());
-});
-
-gulp.task('lib:build', ['lib:clean', 'lib:lint'], () => {
-  return gulp.src(libTsConfig)
-    .pipe(useTsConfig.build());
-});
 
 gulp.task('test:clean', () => {
   return gulp.src(testTsConfig)
     .pipe(useTsConfig.clean());
 });
 
-gulp.task('test:lint', function() {
+gulp.task('test:lint', function () {
   return gulp.src(testTsConfig)
     .pipe(useTsConfig.lint());
 });
@@ -47,7 +32,7 @@ gulp.task('test:build', ['lib:build', 'test:clean', 'test:lint'], () => {
     .pipe(useTsConfig.build());
 });
 
-gulp.task('test:coverage:clean', function() {
+gulp.task('test:coverage:clean', function () {
   return del(TEST_CONFIG.coverageDir);
 });
 
@@ -61,24 +46,24 @@ gulp.task('test', ['test:coverage:clean', 'test:build', 'test:instrument'], func
   return gulp.src('./testTmp/**/*Test.js')
     .pipe(mocha())
     .pipe(istanbul.writeReports({
-      reporters: [ 'json' ],
+      reporters: ['json'],
       reportOpts: { dir: TEST_CONFIG.coverageDir },
     })).on('end', remapCoverageFiles);
 });
 
 function remapCoverageFiles() {
-    return gulp.src('./coverage/coverage-final.json')
+  return gulp.src('./coverage/coverage-final.json')
     .pipe(remapIstanbul({
-        basePath: './testTmp',
-        reports: {
-            'html': TEST_CONFIG.coverageDir,
-            'text': process.output,
-            'text-summary': process.output
-        }
+      basePath: './testTmp',
+      reports: {
+        'html': TEST_CONFIG.coverageDir,
+        'text': process.output,
+        'text-summary': process.output
+      }
     }));
 }
 
-gulp.task('examples:lint', function() {
+gulp.task('examples:lint', function () {
   return gulp.src(examplesTsConfig)
     .pipe(useTsConfig.lint());
 });

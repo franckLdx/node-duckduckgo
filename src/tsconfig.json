@@ -10,8 +10,9 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "target": "es6"
+    "target": "es2018"
   },
+  "allowJs": true,
   "rootDir": ".",
   "include": [
     "**/*.ts"

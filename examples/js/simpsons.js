@@ -1,47 +1,17 @@
 "use strict";
+// tslint:disable:no-console
 
-const { Requester } = require("../../lib/index");
+const { duckIt } = require("../../lib");
 
-const requester = new Requester("node-duckduckgo-example");
-requester.request("bart simpsons", (err, response, body) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log(body);
-});
+// Result as default JSON
+async function get() {
+  const result = await duckIt('bart simpsons');
+  console.log(result.data.AbstractText);
+}
 
-requester.request("bart simpsons")
-  .on("data", (data) => {
-    console.log(data.toString());
-  })
-  .on("error", (err) => {
-    console.log(err);
-  });
+async function getOption() {
+  const result = await duckIt('bart simpsons', { format: 'xml' });
+  console.log(result.data);
+}
 
-//  Prety JSON
-const formatter = requester.formatter;
-formatter.pretty = 1;
-requester.request("bart simpsons", (err, response, body) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log(body);
-});
-
-// pretty JSON, no_html and no no_redirect
-requester.no_html = 1;
-requester.no_redirect = 1;
-requester.request("bart simpsons", (err, response, body) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log(body);
-});
-
-requester.request("bart simpsons").on("data", response => { 
-  console.log(response.toString());
-});
-  
+getOption().then(getOption);

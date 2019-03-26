@@ -1,0 +1,4 @@
+--recursive
+--full-trace
+--bail
+./testTmp/**/*.js
