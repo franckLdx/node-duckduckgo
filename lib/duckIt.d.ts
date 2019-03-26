@@ -1,7 +1,8 @@
 export declare type ParentalFilter = 'Activated' | 'Moderate' | 'Deactivated';
+export declare type Format = 'json' | 'xml';
 export interface SearchOption {
     appName?: string;
-    format?: string;
+    format?: Format;
     noRedirect?: boolean;
     noHtml?: boolean;
     skipDisambig?: boolean;
