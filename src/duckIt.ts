@@ -8,7 +8,7 @@ export type Format = 'json' | 'xml';
 
 export interface SearchOption {
   appName?: string;
-  format?: FormData;
+  format?: Format;
   noRedirect?: boolean;
   noHtml?: boolean;
   skipDisambig?: boolean;
