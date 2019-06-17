@@ -27,12 +27,6 @@ const defaultSearchOption: SearchOption = {
   format: 'json'
 };
 
-const booleanParameters: Record<string, string> = {
-  noRedirect: 'no_redirect',
-  noHtml: 'no_html',
-  skipDisambig: 'skip_disambig'
-};
-
 function makeQueryString(searchQuery: string, userOption: SearchOption) {
   const option = { ...defaultSearchOption, ...userOption };
   return Object.entries(option).reduce(
