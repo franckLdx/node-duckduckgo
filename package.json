@@ -12,6 +12,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "lib": "nss-run lib",
     "test": "nss-run test",
     "lint": "nss-run lib:lint"
   },
@@ -38,20 +39,20 @@
   },
   "homepage": "https://github.com/franckLdx/node-duckduckgo#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.5",
     "chai": "^4.2.0",
-    "del": "^4.0.0",
-    "mocha": "^6.0.2",
+    "del": "^5.1.0",
+    "mocha": "^6.2.1",
     "nss-run": "^0.3.0",
     "shelljs": "^0.8.3",
-    "ts-node": "^8.0.3",
-    "tslint": "^5.14.0",
-    "tslint-clean-code": "^0.2.9",
-    "typescript": "^3.3.3333"
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "tslint-clean-code": "^0.2.10",
+    "typescript": "^3.6.3"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.19.0"
   },
   "nyc": {
     "include": [
