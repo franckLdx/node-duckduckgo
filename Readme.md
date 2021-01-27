@@ -37,7 +37,7 @@ const result = await duckIt('bart simpsons', { noHtml: true, parentalFilter: 'Mo
 
 
 ## Usage
-node-duckduckgo is open sources (MIT license) but it doe grant you to use Duck Duck Go. [Please read this page](https://api.duckduckgo.com/api) before any usage.
+node-duckduckgo (this lib) is open sources (MIT license) but to use Duck Duck Go results you need to follow Duck Duck Go's Terms and Conditions. [Please read this page](https://api.duckduckgo.com/api) before any usage.
 
 
 ## 2.x
