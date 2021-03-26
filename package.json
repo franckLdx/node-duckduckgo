@@ -39,17 +39,17 @@
   },
   "homepage": "https://github.com/franckLdx/node-duckduckgo#readme",
   "devDependencies": {
-    "@types/chai": "4.2.14",
-    "@types/mocha": "8.2.0",
-    "chai": "^4.2.0",
+    "@types/chai": "4.2.15",
+    "@types/mocha": "8.2.2",
+    "chai": "4.3.4",
     "del": "6.0.0",
-    "mocha": "8.2.1",
+    "mocha": "8.3.2",
     "nss-run": "^0.3.0",
     "shelljs": "^0.8.3",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
     "tslint-clean-code": "^0.2.10",
-    "typescript": "4.1.3"
+    "typescript": "4.2.3"
   },
   "dependencies": {
     "axios": "0.21.1"
